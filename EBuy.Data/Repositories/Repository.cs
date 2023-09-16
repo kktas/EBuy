@@ -1,4 +1,5 @@
 ﻿using EBuy.Core.Repositories;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,44 +11,51 @@ namespace EBuy.Data.Repositories
 {
     public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
     {
-        public Task AddAsync(TEntity entity)
+        protected readonly DbContext Context;
+
+        public Repository(DbContext context)
         {
-            throw new NotImplementedException();
+            this.Context = context;
         }
 
-        public Task AddRangeAsync(IEnumerable<TEntity> entities)
+        public async Task AddAsync(TEntity entity)
         {
-            throw new NotImplementedException();
+            await Context.Set<TEntity>().AddAsync(entity);
+        }
+
+        public async Task AddRangeAsync(IEnumerable<TEntity> entities)
+        {
+            await Context.Set<TEntity>().AddRangeAsync(entities);
         }
 
         public IEnumerable<TEntity> Find(Expression<Func<TEntity, bool>> predicate)
         {
-            throw new NotImplementedException();
+            return Context.Set<TEntity>().Where(predicate);
         }
 
-        public Task<IEnumerable<TEntity>> GetAllAsync()
+        public async Task<IEnumerable<TEntity>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            return await Context.Set<TEntity>().ToListAsync();
         }
 
         public ValueTask<TEntity> GetByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            return Context.Set<TEntity>().FindAsync(id);
         }
 
         public void Remove(TEntity entity)
         {
-            throw new NotImplementedException();
+            Context.Set<TEntity>().Remove(entity);
         }
 
         public void RemoveRange(IEnumerable<TEntity> entities)
         {
-            throw new NotImplementedException();
+            Context.Set<TEntity>().RemoveRange(entities);
         }
 
-        public Task<TEntity> SingleOrDefault(Expression<Func<TEntity, bool>> predicate)
+        public Task<TEntity> SingleOrDefaultAsync(Expression<Func<TEntity, bool>> predicate)
         {
-            throw new NotImplementedException();
+            return Context.Set<TEntity>().SingleOrDefaultAsync(predicate);
         }
     }
 }

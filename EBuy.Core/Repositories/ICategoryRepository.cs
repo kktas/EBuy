@@ -9,9 +9,7 @@ namespace EBuy.Core.Repositories
 {
     public interface ICategoryRepository : IRepository<Category>
     {
-        Task<IEnumerable<Category>> GetAllWithParentCategoryAsync();
-        Task<Category> GetWithParentCategoryByIdAsync(int id);
-        Task<IEnumerable<Category>> GetAllWithParentCategoryByCategoryId(int categoryId);
+        Task<IEnumerable<Category>> GetAllByParentCategoryId(int parentCategoryId);
 
     }
 }

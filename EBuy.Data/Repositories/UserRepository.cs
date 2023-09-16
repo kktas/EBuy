@@ -1,29 +1,40 @@
 ﻿using EBuy.Core.Models;
 using EBuy.Core.Repositories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace EBuy.Data.Repositories
 {
     public class UserRepository : Repository<User>, IUserRepository
     {
-        public Task<IEnumerable<User>> GetAllWithBusinessAsync()
+        public UserRepository(DbContext context) : base(context) { }
+
+        public async Task<IEnumerable<User>> GetAllWithBusinessAsync()
         {
-            throw new NotImplementedException();
+            return await EBuyDbContext.Users
+                .Include(u => u.Business)
+                .ToListAsync();
         }
 
-        public Task<IEnumerable<User>> GetAllWithBusinessByBusinessIdAsync(int businessId)
+        public async Task<IEnumerable<User>> GetAllWithBusinessByBusinessIdAsync(int businessId)
         {
-            throw new NotImplementedException();
+            return await EBuyDbContext.Users
+                .Include(u => u.Business)
+                .Where(u => u.BusinessId == businessId)
+                .ToListAsync();
         }
 
         public Task<User> GetWithBusinessByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            return EBuyDbContext.Users
+                .Include(u => u.Business)
+                .SingleAsync(u => u.Id == id);
+        }
+
+        private EBuyDbContext EBuyDbContext
+        {
+#pragma warning disable CS8603 // Possible null reference return.
+            get { return Context as EBuyDbContext; }
+#pragma warning restore CS8603 // Possible null reference return.       
         }
     }
 }
