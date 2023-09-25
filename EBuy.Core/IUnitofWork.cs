@@ -7,14 +7,14 @@ using System.Threading.Tasks;
 
 namespace EBuy.Core
 {
-    internal interface IUnitofWork
+    public interface IUnitOfWork
     {
-        IBusinessRepository BusinessRepository { get; }
-        ICategoryRepository CategoryRepository { get; }
-        IProductRepository ProductRepository { get; }
-        IProductPropertyRepository ProductPropertyRepository { get; }
-        IProductPropertyTypeRepository ProductPropertyTypeRepository { get; }
-        IUserRepository UserRepository { get; }
+        IBusinessRepository Businesses { get; }
+        ICategoryRepository Categories { get; }
+        IProductRepository Products { get; }
+        IProductPropertyRepository ProductProperties { get; }
+        ICategoryPropertyRepository CategoryProperties { get; }
+        IUserRepository Users { get; }
         Task<int> CommitAsync();
     }
 }

@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\EBuy.Core\EBuy.Core.csproj" />
+  </ItemGroup>
+
 </Project>

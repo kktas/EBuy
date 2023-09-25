@@ -2,7 +2,7 @@
 
 namespace EBuy.Core.Models
 {
-    public class ProductPropertyType : ModelAudit
+    public class CategoryProperty : ModelAudit
     {
         public string Name { get; set; }
         public Category Category { get; set; }

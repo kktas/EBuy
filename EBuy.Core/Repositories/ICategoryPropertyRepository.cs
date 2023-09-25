@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace EBuy.Core.Repositories
 {
-    public interface IProductPropertyTypeRepository : IRepository<ProductPropertyType>
+    public interface ICategoryPropertyRepository : IRepository<CategoryProperty>
     {
     }
 }

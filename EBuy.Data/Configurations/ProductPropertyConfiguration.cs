@@ -19,9 +19,9 @@ namespace EBuy.Data.Configurations
                 .IsRequired()
                 .HasMaxLength(255);
 
-            builder.HasOne(pp => pp.ProductPropertyType)
+            builder.HasOne(pp => pp.CategoryProperty)
                 .WithMany(ppt => ppt.ProductProperties)
-                .HasForeignKey(pp => pp.ProductPropertyTypeId);
+                .HasForeignKey(pp => pp.CategoryPropertyId);
 
             builder.ToTable("t_product_property");
         }

@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace EBuy.Data.Configurations
 {
-    public class ProductPropertyTypeConfiguration : BaseConfiguration<ProductPropertyType>
+    public class CategoryPropertyConfiguration : BaseConfiguration<CategoryProperty>
     {
-        public override void Configure(EntityTypeBuilder<ProductPropertyType> builder)
+        public override void Configure(EntityTypeBuilder<CategoryProperty> builder)
         {
             base.Configure(builder);
 
@@ -20,7 +20,7 @@ namespace EBuy.Data.Configurations
                 .HasMaxLength(255);
 
             builder.HasOne(ppt => ppt.Category)
-                .WithMany(c => c.ProductPropertyTypes)
+                .WithMany(c => c.CategoryProperties)
                 .HasForeignKey(ppt => ppt.CategoryId);
 
             builder.ToTable("t_product_property_type");

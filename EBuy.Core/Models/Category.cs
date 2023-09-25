@@ -9,6 +9,6 @@ namespace EBuy.Core.Models
         public int? ParentCategoryId { get; set; }
         public ICollection<Product> Products { get; set; }
         public ICollection<Category> ChildCategories { get; set; }
-        public ICollection<ProductPropertyType> ProductPropertyTypes { get; set; }
+        public ICollection<CategoryProperty> CategoryProperties { get; set; }
     }
 }
