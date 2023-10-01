@@ -14,6 +14,8 @@ public class ProductPropertyService : IProductPropertyService
     public async Task<ProductProperty> CreateProductProperty(ProductProperty productProperty)
     {
         await _unitOfWork.ProductProperties.AddAsync(productProperty);
+        await _unitOfWork.CommitAsync();
+        return productProperty;
     }
 
     public async Task DeleteProductProperty(ProductProperty productProperty)

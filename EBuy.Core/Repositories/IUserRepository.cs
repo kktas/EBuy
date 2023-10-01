@@ -11,6 +11,6 @@ namespace EBuy.Core.Repositories
     {
         Task<IEnumerable<User>> GetAllWithBusinessAsync();
         Task<User> GetWithBusinessByIdAsync(int id);
-        Task<IEnumerable<User>> GetAllWithBusinessByBusinessIdAsync(int businessId)
+        Task<IEnumerable<User>> GetAllWithBusinessByBusinessIdAsync(int businessId);
     }
 }

@@ -39,7 +39,7 @@ namespace EBuy.Data
                     Address = "Acıbadem, 34660 Üsküdar/İstanbul",
                     Email = "ebuyaliveli@gmail.com",
                     Business = null,
-                    PhoneNumber = "+90 123 456 78 90",
+                    PhoneNumber = "+901234567890",
                     Password = "1234567890"
                 }
             );

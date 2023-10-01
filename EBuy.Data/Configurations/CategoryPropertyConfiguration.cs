@@ -23,7 +23,7 @@ namespace EBuy.Data.Configurations
                 .WithMany(c => c.CategoryProperties)
                 .HasForeignKey(ppt => ppt.CategoryId);
 
-            builder.ToTable("t_product_property_type");
+            builder.ToTable("t_category_property");
         }
     }
 }

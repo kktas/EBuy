@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace EBuy.Data
 {
 
-    internal class UnitOfWork : IUnitOfWork
+    public class UnitOfWork : IUnitOfWork
     {
         private readonly EBuyDbContext _context;
         private BusinessRepository _businessRepository;
@@ -28,8 +28,8 @@ namespace EBuy.Data
         public IBusinessRepository Businesses => _businessRepository ??= new BusinessRepository(this._context);
         public ICategoryRepository Categories => _categoryRepository ??= new CategoryRepository(this._context);
         public IProductRepository Products => _productRepository ??= new ProductRepository(this._context);
-        public IProductPropertyRepository ProductProperty => _productPropertyRepository ??= new ProductPropertyRepository(this._context);
-        public ICategoryPropertyRepository CategoryProperty => _categoryPropertyRepository ??= new CategoryPropertyRepository(this._context);
+        public IProductPropertyRepository ProductProperties => _productPropertyRepository ??= new ProductPropertyRepository(this._context);
+        public ICategoryPropertyRepository CategoryProperties => _categoryPropertyRepository ??= new CategoryPropertyRepository(this._context);
         public IUserRepository Users => _userRepository ??= new UserRepository(this._context);
 
         public Task<int> CommitAsync()
