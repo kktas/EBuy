@@ -82,30 +82,6 @@ namespace EBuy.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "t_category_property",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
-                    CategoryId = table.Column<int>(type: "int", nullable: false),
-                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    CreatedBy = table.Column<int>(type: "int", nullable: false),
-                    DeletedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    DeletedBy = table.Column<int>(type: "int", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_t_category_property", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_t_category_property_t_category_CategoryId",
-                        column: x => x.CategoryId,
-                        principalTable: "t_category",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "t_product",
                 columns: table => new
                 {
@@ -141,13 +117,37 @@ namespace EBuy.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "t_product_property_type",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
+                    CategoryId = table.Column<int>(type: "int", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CreatedBy = table.Column<int>(type: "int", nullable: false),
+                    DeletedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    DeletedBy = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_t_product_property_type", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_t_product_property_type_t_category_CategoryId",
+                        column: x => x.CategoryId,
+                        principalTable: "t_category",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "t_product_property",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
-                    CategoryPropertyId = table.Column<int>(type: "int", nullable: false),
+                    ProductPropertyTypeId = table.Column<int>(type: "int", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     CreatedBy = table.Column<int>(type: "int", nullable: false),
                     DeletedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
@@ -157,9 +157,9 @@ namespace EBuy.Data.Migrations
                 {
                     table.PrimaryKey("PK_t_product_property", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_t_product_property_t_category_property_CategoryPropertyId",
-                        column: x => x.CategoryPropertyId,
-                        principalTable: "t_category_property",
+                        name: "FK_t_product_property_t_product_property_type_ProductPropertyTypeId",
+                        column: x => x.ProductPropertyTypeId,
+                        principalTable: "t_product_property_type",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -167,17 +167,12 @@ namespace EBuy.Data.Migrations
             migrationBuilder.InsertData(
                 table: "t_user",
                 columns: new[] { "Id", "Address", "BusinessId", "CreatedAt", "CreatedBy", "DeletedAt", "DeletedBy", "Email", "FirstName", "LastName", "Password", "PhoneNumber" },
-                values: new object[] { 1, "Acıbadem, 34660 Üsküdar/İstanbul", null, new DateTime(2023, 9, 30, 4, 44, 41, 704, DateTimeKind.Local).AddTicks(4972), 0, null, null, "ebuyaliveli@gmail.com", "Ali", "Veli", "1234567890", "+901234567890" });
+                values: new object[] { 1, "Acıbadem, 34660 Üsküdar/İstanbul", null, new DateTime(2023, 10, 1, 14, 58, 2, 822, DateTimeKind.Local).AddTicks(2800), 0, null, null, "ebuyaliveli@gmail.com", "Ali", "Veli", "1234567890", "+901234567890" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_t_category_ParentCategoryId",
                 table: "t_category",
                 column: "ParentCategoryId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_t_category_property_CategoryId",
-                table: "t_category_property",
-                column: "CategoryId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_t_product_BusinessId",
@@ -190,9 +185,14 @@ namespace EBuy.Data.Migrations
                 column: "CategoryId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_t_product_property_CategoryPropertyId",
+                name: "IX_t_product_property_ProductPropertyTypeId",
                 table: "t_product_property",
-                column: "CategoryPropertyId");
+                column: "ProductPropertyTypeId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_t_product_property_type_CategoryId",
+                table: "t_product_property_type",
+                column: "CategoryId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_t_user_BusinessId",
@@ -213,7 +213,7 @@ namespace EBuy.Data.Migrations
                 name: "t_user");
 
             migrationBuilder.DropTable(
-                name: "t_category_property");
+                name: "t_product_property_type");
 
             migrationBuilder.DropTable(
                 name: "t_business");

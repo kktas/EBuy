@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EBuy.Data.Migrations
 {
     [DbContext(typeof(EBuyDbContext))]
-    [Migration("20230930014441_InitialModel")]
+    [Migration("20231001115802_InitialModel")]
     partial class InitialModel
     {
         /// <inheritdoc />
@@ -100,41 +100,6 @@ namespace EBuy.Data.Migrations
                     b.ToTable("t_category", (string)null);
                 });
 
-            modelBuilder.Entity("EBuy.Core.Models.CategoryProperty", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("CategoryId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("CreatedBy")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime?>("DeletedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int?>("DeletedBy")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CategoryId");
-
-                    b.ToTable("t_category_property", (string)null);
-                });
-
             modelBuilder.Entity("EBuy.Core.Models.Product", b =>
                 {
                     b.Property<int>("Id")
@@ -200,7 +165,42 @@ namespace EBuy.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("CategoryPropertyId")
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("CreatedBy")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("DeletedBy")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<int>("ProductPropertyTypeId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductPropertyTypeId");
+
+                    b.ToTable("t_product_property", (string)null);
+                });
+
+            modelBuilder.Entity("EBuy.Core.Models.ProductPropertyType", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("CategoryId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("CreatedAt")
@@ -222,9 +222,9 @@ namespace EBuy.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CategoryPropertyId");
+                    b.HasIndex("CategoryId");
 
-                    b.ToTable("t_product_property", (string)null);
+                    b.ToTable("t_product_property_type", (string)null);
                 });
 
             modelBuilder.Entity("EBuy.Core.Models.User", b =>
@@ -290,7 +290,7 @@ namespace EBuy.Data.Migrations
                         {
                             Id = 1,
                             Address = "Acıbadem, 34660 Üsküdar/İstanbul",
-                            CreatedAt = new DateTime(2023, 9, 30, 4, 44, 41, 704, DateTimeKind.Local).AddTicks(4972),
+                            CreatedAt = new DateTime(2023, 10, 1, 14, 58, 2, 822, DateTimeKind.Local).AddTicks(2800),
                             CreatedBy = 0,
                             Email = "ebuyaliveli@gmail.com",
                             FirstName = "Ali",
@@ -307,17 +307,6 @@ namespace EBuy.Data.Migrations
                         .HasForeignKey("ParentCategoryId");
 
                     b.Navigation("ParentCategory");
-                });
-
-            modelBuilder.Entity("EBuy.Core.Models.CategoryProperty", b =>
-                {
-                    b.HasOne("EBuy.Core.Models.Category", "Category")
-                        .WithMany("CategoryProperties")
-                        .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Category");
                 });
 
             modelBuilder.Entity("EBuy.Core.Models.Product", b =>
@@ -341,13 +330,24 @@ namespace EBuy.Data.Migrations
 
             modelBuilder.Entity("EBuy.Core.Models.ProductProperty", b =>
                 {
-                    b.HasOne("EBuy.Core.Models.CategoryProperty", "CategoryProperty")
+                    b.HasOne("EBuy.Core.Models.ProductPropertyType", "ProductPropertyType")
                         .WithMany("ProductProperties")
-                        .HasForeignKey("CategoryPropertyId")
+                        .HasForeignKey("ProductPropertyTypeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("CategoryProperty");
+                    b.Navigation("ProductPropertyType");
+                });
+
+            modelBuilder.Entity("EBuy.Core.Models.ProductPropertyType", b =>
+                {
+                    b.HasOne("EBuy.Core.Models.Category", "Category")
+                        .WithMany("ProductPropertyTypes")
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Category");
                 });
 
             modelBuilder.Entity("EBuy.Core.Models.User", b =>
@@ -368,14 +368,14 @@ namespace EBuy.Data.Migrations
 
             modelBuilder.Entity("EBuy.Core.Models.Category", b =>
                 {
-                    b.Navigation("CategoryProperties");
-
                     b.Navigation("ChildCategories");
+
+                    b.Navigation("ProductPropertyTypes");
 
                     b.Navigation("Products");
                 });
 
-            modelBuilder.Entity("EBuy.Core.Models.CategoryProperty", b =>
+            modelBuilder.Entity("EBuy.Core.Models.ProductPropertyType", b =>
                 {
                     b.Navigation("ProductProperties");
                 });

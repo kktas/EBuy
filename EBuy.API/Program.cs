@@ -20,7 +20,7 @@ builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 // Add Services 
 builder.Services.AddTransient<IBusinessService, BusinessService>();
 builder.Services.AddTransient<ICategoryService, CategoryService>();
-builder.Services.AddTransient<ICategoryPropertyService, CategoryPropertyService>();
+builder.Services.AddTransient<IProductPropertyTypeService, ProductPropertyTypeService>();
 builder.Services.AddTransient<IProductService, ProductService>();
 builder.Services.AddTransient<IProductPropertyService, ProductPropertyService>();
 builder.Services.AddTransient<IUserService, UserService>();

@@ -13,7 +13,7 @@ namespace EBuy.Data
     {
         public DbSet<Business> Businesses { get; set; }
         public DbSet<Category> Categories { get; set; }
-        public DbSet<CategoryProperty> CategoryProperties { get; set; }
+        public DbSet<ProductPropertyType> ProductPropertyTypes { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<ProductProperty> ProductProperties { get; set; }
         public DbSet<User> Users { get; set; }
@@ -25,7 +25,7 @@ namespace EBuy.Data
         {
             builder.ApplyConfiguration(new BusinessConfiguration());
             builder.ApplyConfiguration(new CategoryConfiguration());
-            builder.ApplyConfiguration(new CategoryPropertyConfiguration());
+            builder.ApplyConfiguration(new ProductPropertyTypeConfiguration());
             builder.ApplyConfiguration(new ProductConfiguration());
             builder.ApplyConfiguration(new ProductPropertyConfiguration());
             builder.ApplyConfiguration(new UserConfiguration());

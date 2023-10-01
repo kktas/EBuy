@@ -13,7 +13,7 @@ namespace EBuy.Core
         ICategoryRepository Categories { get; }
         IProductRepository Products { get; }
         IProductPropertyRepository ProductProperties { get; }
-        ICategoryPropertyRepository CategoryProperties { get; }
+        IProductPropertyTypeRepository ProductPropertyTypes { get; }
         IUserRepository Users { get; }
         Task<int> CommitAsync();
     }

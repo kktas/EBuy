@@ -37,7 +37,7 @@ public class ProductPropertyService : IProductPropertyService
     public async Task UpdateProductProperty(ProductProperty productPropertyToBeUpdated, ProductProperty productProperty)
     {
         productPropertyToBeUpdated.Name = productProperty.Name;
-        productPropertyToBeUpdated.CategoryPropertyId = productProperty.CategoryPropertyId;
+        productPropertyToBeUpdated.ProductPropertyTypeId = productProperty.ProductPropertyTypeId;
         productPropertyToBeUpdated.DeletedAt = productProperty.DeletedAt;
         productPropertyToBeUpdated.DeletedBy = productProperty.DeletedBy;
 

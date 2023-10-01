@@ -17,7 +17,7 @@ namespace EBuy.Data
         private CategoryRepository _categoryRepository;
         private ProductRepository _productRepository;
         private ProductPropertyRepository _productPropertyRepository;
-        private CategoryPropertyRepository _categoryPropertyRepository;
+        private ProductPropertyTypeRepository _productPropertyTypeRepository;
         private UserRepository _userRepository;
 
         public UnitOfWork(EBuyDbContext context)
@@ -29,7 +29,7 @@ namespace EBuy.Data
         public ICategoryRepository Categories => _categoryRepository ??= new CategoryRepository(this._context);
         public IProductRepository Products => _productRepository ??= new ProductRepository(this._context);
         public IProductPropertyRepository ProductProperties => _productPropertyRepository ??= new ProductPropertyRepository(this._context);
-        public ICategoryPropertyRepository CategoryProperties => _categoryPropertyRepository ??= new CategoryPropertyRepository(this._context);
+        public IProductPropertyTypeRepository ProductPropertyTypes => _productPropertyTypeRepository ??= new ProductPropertyTypeRepository(this._context);
         public IUserRepository Users => _userRepository ??= new UserRepository(this._context);
 
         public Task<int> CommitAsync()

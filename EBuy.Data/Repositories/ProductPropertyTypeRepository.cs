@@ -10,9 +10,9 @@ using System.Threading.Tasks;
 
 namespace EBuy.Data.Repositories
 {
-    public class CategoryPropertyRepository : Repository<CategoryProperty>, ICategoryPropertyRepository
+    public class ProductPropertyTypeRepository : Repository<ProductPropertyType>, IProductPropertyTypeRepository
     {
-        public CategoryPropertyRepository(DbContext context) : base(context)
+        public ProductPropertyTypeRepository(DbContext context) : base(context)
         {
         }
         private EBuyDbContext EBuyDbContext
