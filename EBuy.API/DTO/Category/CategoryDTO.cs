@@ -1,9 +1,9 @@
-﻿namespace EBuy.API.DTO
+﻿namespace EBuy.API.DTO.Category
 {
     public class CategoryDTO
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public int? ParentCaterogryId { get; set; }
+        public int? ParentCategoryId { get; set; }
     }
 }

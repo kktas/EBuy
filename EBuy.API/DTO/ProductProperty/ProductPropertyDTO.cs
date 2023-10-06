@@ -1,4 +1,4 @@
-﻿namespace EBuy.API.DTO
+﻿namespace EBuy.API.DTO.ProductProperty
 {
     public class ProductPropertyDTO
     {

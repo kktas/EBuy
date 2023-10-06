@@ -1,8 +1,7 @@
-﻿namespace EBuy.API.DTO
+﻿namespace EBuy.API.DTO.Business
 {
-    public class BusinessDTO
+    public class UpdateBusinessDTO
     {
-        public int Id { get; set; }
         public string Name { get; set; }
         public string Address { get; set; }
         public string PhoneNumber { get; set; }

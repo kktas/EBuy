@@ -1,4 +1,5 @@
 ﻿using EBuy.Core.Models;
+using EBuy.Data.Constants;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
@@ -17,7 +18,7 @@ namespace EBuy.Data.Configurations
 
             builder.Property(pp => pp.Name)
                 .IsRequired()
-                .HasMaxLength(255);
+                .HasMaxLength(ConfigurationConstants.NameLength);
 
             builder.HasOne(pp => pp.ProductPropertyType)
                 .WithMany(ppt => ppt.ProductProperties)

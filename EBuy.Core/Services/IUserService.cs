@@ -8,7 +8,8 @@ namespace EBuy.Core.Services
         public Task<User> GetUserById(int id);
         public Task<User> CreateUser(User user);
         public Task<IEnumerable<User>> GetUsersByBusinessId(int businessId);
-        public Task UpdateUser(User userToBeUpdated, User user);
+        public Task UpdateUserInfo(User userToBeUpdated, User user);
+        public Task UpdateUserPassword(User userToBeUpdated, string password);
         public Task DeleteUser(User user);
     }
 }

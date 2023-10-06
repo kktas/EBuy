@@ -40,16 +40,22 @@ public class UserService : IUserService
         return await _unitOfWork.Users.GetAllWithBusinessByBusinessIdAsync(businessId);
     }
 
-    public async Task UpdateUser(User userToBeUpdated, User user)
+    public async Task UpdateUserInfo(User userToBeUpdated, User user)
     {
         userToBeUpdated.Address = user.Address;
         userToBeUpdated.FirstName = user.FirstName;
         userToBeUpdated.LastName = user.LastName;
         userToBeUpdated.Email = user.Email;
         userToBeUpdated.PhoneNumber = user.PhoneNumber;
-        userToBeUpdated.Password = user.Password;
         userToBeUpdated.DeletedAt = user.DeletedAt;
         userToBeUpdated.DeletedBy = user.DeletedBy;
+
+        await _unitOfWork.CommitAsync();
+    }
+
+    public async Task UpdateUserPassword(User userToBeUpdated, string password)
+    {
+        userToBeUpdated.Password = password;
 
         await _unitOfWork.CommitAsync();
     }

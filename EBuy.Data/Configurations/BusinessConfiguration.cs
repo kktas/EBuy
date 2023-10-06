@@ -1,4 +1,5 @@
 ﻿using EBuy.Core.Models;
+using EBuy.Data.Constants;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -14,15 +15,15 @@ namespace EBuy.Data.Configurations
 
             builder.Property(b => b.Name)
                 .IsRequired()
-                .HasMaxLength(255);
+                .HasMaxLength(ConfigurationConstants.NameLength);
 
             builder.Property(b => b.Address)
                 .IsRequired()
-                .HasMaxLength(255);
+                .HasMaxLength(ConfigurationConstants.AddressLength);
 
             builder.Property(b => b.PhoneNumber)
                 .IsRequired()
-                .HasMaxLength(16);
+                .HasMaxLength(ConfigurationConstants.PhoneLength);
 
             builder.ToTable("t_business");
         }

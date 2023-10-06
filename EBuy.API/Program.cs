@@ -1,4 +1,5 @@
-using AutoMapper;
+﻿using AutoMapper;
+using EBuy.API.Controllers;
 using EBuy.Core;
 using EBuy.Core.Services;
 using EBuy.Data;
@@ -8,12 +9,10 @@ using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
 
 // Add Unit of Work
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();

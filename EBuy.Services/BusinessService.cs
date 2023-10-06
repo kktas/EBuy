@@ -29,7 +29,7 @@ namespace EBuy.Services
             return await _unitOfWork.Businesses.GetAllAsync();
         }
 
-        public async Task<Business> GetBusinessesById(int id)
+        public async Task<Business> GetBusinessById(int id)
         {
             return await _unitOfWork.Businesses.GetByIdAsync(id);
         }
