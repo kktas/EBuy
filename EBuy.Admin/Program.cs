@@ -1,7 +1,11 @@
+using EBuy.Admin;
+
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddHttpContextAccessor();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddScoped<IEBuyApiService, EBuyApiService>();
 
 var app = builder.Build();
 

@@ -1,27 +1,23 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using RestSharp;
+using RestSharp.Authenticators;
 
 namespace EBuy.Admin.Controllers
 {
     public class UserController : Controller
     {
+        private readonly IEBuyApiService _ebuyApiService;
+
+        public UserController(IEBuyApiService ebuyApiService)
+        {
+            _ebuyApiService = ebuyApiService;
+        }
         // GET: User
         public async Task<IActionResult> Index()
         {
-            using var client = new HttpClient();
-            // // client.BaseAddress = new Uri();
-            // // Add an Accept header for JSON format.
-            // // client.DefaultRequestHeaders.Accept.Add(
-            // //    new MediaTypeWithQualityHeaderValue("application/json"));
-            // // // Get data response
-            var response = await client.GetStringAsync("http://localhost:5162/api/user");
-            Console.WriteLine(response);
-            Console.WriteLine("kekekek");
-            return View();
+            var result = await _ebuyApiService.Get<dynamic>("user");
+            return View(result);
         }
 
         // GET: User/Details/5
