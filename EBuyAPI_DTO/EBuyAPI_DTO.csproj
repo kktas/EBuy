@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+
+  <PropertyGroup>
+    <PackageId>EBuyAPI_DTO</PackageId>
+    <Version>1.0.1</Version>
+    <Authors>kktas</Authors>
+    <Company>Self</Company>
+
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+
+</Project>

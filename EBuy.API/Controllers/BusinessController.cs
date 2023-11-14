@@ -1,7 +1,8 @@
 ﻿using AutoMapper;
-using EBuy.API.DTO.Business;
+// using EBuyAPI_DTO.Business;
 using EBuy.API.Validators.Business;
 using EBuy.Core.Models;
+using EBuyAPI_DTO.Business;
 using EBuy.Core.Services;
 using Microsoft.AspNetCore.Mvc;
 

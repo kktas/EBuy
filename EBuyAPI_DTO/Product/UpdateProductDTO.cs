@@ -1,6 +1,6 @@
-﻿namespace EBuy.API.DTO.Product
+﻿namespace EBuyAPI_DTO.Product
 {
-    public class CreateProductDTO
+    public class UpdateProductDTO
     {
         public string Name { get; set; }
         public string Description { get; set; }

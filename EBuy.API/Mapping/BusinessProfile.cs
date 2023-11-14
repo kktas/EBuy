@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using EBuy.API.DTO.Business;
+using EBuyAPI_DTO.Business;
 using EBuy.Core.Models;
 
 namespace EBuy.API.Mapping

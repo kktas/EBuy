@@ -1,4 +1,4 @@
-﻿using EBuy.API.DTO.ProductProperty;
+﻿using EBuyAPI_DTO.ProductProperty;
 using FluentValidation;
 
 namespace EBuy.API.Validators.ProductProperty

@@ -1,6 +1,6 @@
-﻿namespace EBuy.API.DTO.Category
+﻿namespace EBuyAPI_DTO.Category
 {
-    public class UpdateCategoryDTO
+    public class CreateCategoryDTO
     {
         public string Name { get; set; }
         public int? ParentCategoryId { get; set; }

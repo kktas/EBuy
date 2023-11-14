@@ -1,4 +1,4 @@
-﻿namespace EBuy.API.DTO.Business
+﻿namespace EBuyAPI_DTO.Business
 {
     public class CreateBusinessDTO
     {

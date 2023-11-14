@@ -1,4 +1,4 @@
-﻿using EBuy.API.DTO.User;
+﻿using EBuyAPI_DTO.User;
 using FluentValidation;
 
 namespace EBuy.API.Validators.User

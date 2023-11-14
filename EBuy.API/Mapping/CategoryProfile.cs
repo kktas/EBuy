@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using EBuy.API.DTO.Category;
+using EBuyAPI_DTO.Category;
 using EBuy.Core.Models;
 
 namespace EBuy.API.Mapping

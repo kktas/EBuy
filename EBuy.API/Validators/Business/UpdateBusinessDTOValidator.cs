@@ -1,4 +1,4 @@
-﻿using EBuy.API.DTO.Business;
+﻿using EBuyAPI_DTO.Business;
 using FluentValidation;
 
 namespace EBuy.API.Validators.Business

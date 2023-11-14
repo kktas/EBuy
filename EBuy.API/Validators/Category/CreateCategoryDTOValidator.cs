@@ -1,4 +1,4 @@
-﻿using EBuy.API.DTO.Category;
+﻿using EBuyAPI_DTO.Category;
 using FluentValidation;
 
 namespace EBuy.API.Validators.Category

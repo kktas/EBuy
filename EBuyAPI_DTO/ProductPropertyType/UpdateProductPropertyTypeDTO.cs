@@ -1,6 +1,6 @@
-﻿namespace EBuy.API.DTO.ProductPropertyType
+﻿namespace EBuyAPI_DTO.ProductPropertyType
 {
-    public class CreateProductPropertyTypeDTO
+    public class UpdateProductPropertyTypeDTO
     {
         public string Name { get; set; }
         public int CategoryId { get; set; }

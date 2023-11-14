@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using EBuy.API.DTO.ProductProperty;
+using EBuyAPI_DTO.ProductProperty;
 using EBuy.API.Validators.ProductProperty;
 using EBuy.Core.Models;
 using EBuy.Core.Services;
