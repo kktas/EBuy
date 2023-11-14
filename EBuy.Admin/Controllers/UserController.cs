@@ -1,7 +1,5 @@
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using RestSharp;
-using RestSharp.Authenticators;
+using EBuyAPI_DTO.User;
 
 namespace EBuy.Admin.Controllers
 {
@@ -16,7 +14,7 @@ namespace EBuy.Admin.Controllers
         // GET: User
         public async Task<IActionResult> Index()
         {
-            var result = await _ebuyApiService.Get<dynamic>("user");
+            var result = await _ebuyApiService.Get<List<UserDTO>>("user");
             return View(result);
         }
 

@@ -1,6 +1,24 @@
-﻿@page
-@model EBuy.Admin.Models.ErrorViewModel
+﻿@using EBuyAPI_DTO.User;
+@model List<UserDTO>
 @{
 }
 
-kek
+<div>
+    @foreach (var item in Model)
+    {
+        <div>
+            <p>First name: @(item.FirstName)</p>
+            <p>Last name: @(item.LastName)</p>
+            <p>Email: @(item.Email)</p>
+            <p>Phone number: @(item.PhoneNumber)</p>
+            <p>Address: @(item.Address)</p>
+            <p>Password: @(item.Password)</p>
+            <p>Id: @(item.Id)</p>
+            <p>BusinessId: @(item.BusinessId)</p>
+        </div>
+
+    }
+</div>
+@{
+
+} kek
