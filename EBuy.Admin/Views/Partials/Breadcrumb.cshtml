@@ -6,8 +6,8 @@
     @foreach (var item in Model)
     {
         var innerHtml = item.Text;
-        if (item.Url != null) innerHtml = $"<a href='{item.Url}'>{item.Text}</a>";
+        if (item.Url != null) innerHtml = $"<a href='{item.Url}' style='text-decoration: none;'>{item.Text}</a>";
 
-        <li class="breadcrumb-item">@innerHtml</li>
+        <li class="breadcrumb-item">@Html.Raw(innerHtml)</li>
     }
 </ol>
