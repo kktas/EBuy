@@ -3,7 +3,7 @@
 
   <PropertyGroup>
     <PackageId>EBuyAPI_DTO</PackageId>
-    <Version>1.0.1</Version>
+    <Version>1.0.2</Version>
     <Authors>kktas</Authors>
     <Company>Self</Company>
 
