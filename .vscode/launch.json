@@ -9,8 +9,13 @@
       "type": "coreclr",
       "request": "launch",
       "preLaunchTask": "build",
-      "program": "${workspaceFolder}/EBuy.Admin/bin/Debug/net7.0/EBuy.Admin.dll",
-      "args": [],
+      "program": "dotnet",
+      "args": [
+        "watch",
+        "--project",
+        ".",
+        "--verbose"
+      ],
       "cwd": "${workspaceFolder}/EBuy.Admin",
       "stopAtEntry": false,
       "serverReadyAction": {
@@ -29,8 +34,13 @@
       "type": "coreclr",
       "request": "launch",
       "preLaunchTask": "build",
-      "program": "${workspaceFolder}/EBuy.API/bin/Debug/net6.0/EBuy.API.dll",
-      "args": [],
+      "program": "dotnet",
+      "args": [
+        "watch",
+        "--project",
+        ".",
+        "--verbose"
+      ],
       "cwd": "${workspaceFolder}/EBuy.API",
       "stopAtEntry": false,
       "serverReadyAction": {
