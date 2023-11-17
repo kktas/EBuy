@@ -1,5 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using EBuyAPI_DTO.User;
+using EBuy.Admin.Models;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace EBuy.Admin.Controllers
 {
@@ -15,7 +17,21 @@ namespace EBuy.Admin.Controllers
         public async Task<IActionResult> Index()
         {
             var result = await _ebuyApiService.Get<List<UserDTO>>("user");
-            return View(result);
+            Page<List<UserDTO>> page = new()
+            {
+                Data = result ?? new List<UserDTO>(),
+                View = new()
+                {
+                    Title = "Users",
+                    Breadcrumbs = new List<BreadcrumbItem>(){
+                        new(){Text = "Admin", Url = "https://www.google.com" },
+                        new(){Text = "User"},
+                    },
+                    SelectLists = new List<SelectList>(),
+                    Search = new Dictionary<string, dynamic>(),
+                },
+            };
+            return View(page);
         }
 
         // GET: User/Details/5
