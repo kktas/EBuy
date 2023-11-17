@@ -1,0 +1,13 @@
+﻿@model List<BreadcrumbItem>
+@{
+}
+
+<ol class="breadcrumb d-flex align-items-center mb-0">
+    @foreach (var item in Model)
+    {
+        var innerHtml = item.Text;
+        if (item.Url != null) innerHtml = $"<a href='{item.Url}'>{item.Text}</a>";
+
+        <li class="breadcrumb-item">@innerHtml</li>
+    }
+</ol>

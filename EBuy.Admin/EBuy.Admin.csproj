@@ -5,14 +5,13 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
   <ItemGroup>
-    <Folder Include="Models\User\" />
-    <Folder Include="Views\Partials\" />
-    <Folder Include="Views\Shared\Partials\" />
+    <Folder Include="ViewModels\" />
     <Folder Include="wwwroot\css\" />
     <Folder Include="wwwroot\lib\" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="EBuyAPI_DTO" Version="1.0.1" />
+    <PackageReference Include="EBuyAPI_DTO" Version="1.0.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="7" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="7.0.10" />
     <PackageReference Include="RestSharp" Version="110.2.0" />
   </ItemGroup>

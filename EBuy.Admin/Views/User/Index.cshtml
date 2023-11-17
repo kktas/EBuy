@@ -1,24 +1,45 @@
 ﻿@using EBuyAPI_DTO.User;
-@model List<UserDTO>
+@using EBuy.Admin.Models.ViewModels;
+@model Page<List<UserDTO>>
 @{
+    Layout = "_Layout";
+    var table = new Table()
+            {
+                Headers = new List<string>() { "Header1", "Header2", "Header3", "Header4", "Header5", "Header6", "Header7" },
+                Rows = new List<Row>(),
+            };
+
+    foreach (var item in Model.Data)
+    {
+        Row row = new Row() { Cells = new List<string>() };
+        row.Cells.Add(item.FirstName);
+        row.Cells.Add(item.LastName);
+        row.Cells.Add(item.Email);
+        row.Cells.Add(item.PhoneNumber);
+        row.Cells.Add(item.Address);
+        row.Cells.Add(item.Id.ToString());
+        row.Cells.Add(item.BusinessId.ToString());
+
+        table.Rows.Add(row);
+    }
 }
 
+@await Html.PartialAsync("~/Views/Partials/Table.cshtml", table)
+@* <div>
+@foreach (var item in Model)
+{
 <div>
-    @foreach (var item in Model)
-    {
-        <div>
-            <p>First name: @(item.FirstName)</p>
-            <p>Last name: @(item.LastName)</p>
-            <p>Email: @(item.Email)</p>
-            <p>Phone number: @(item.PhoneNumber)</p>
-            <p>Address: @(item.Address)</p>
-            <p>Password: @(item.Password)</p>
-            <p>Id: @(item.Id)</p>
-            <p>BusinessId: @(item.BusinessId)</p>
-        </div>
+<p>First name: @(item.FirstName)</p>
+<p>Last name: @(item.LastName)</p>
+<p>Email: @(item.Email)</p>
+<p>Phone number: @(item.PhoneNumber)</p>
+<p>Address: @(item.Address)</p>
+<p>Id: @(item.Id)</p>
+<p>BusinessId: @(item.BusinessId)</p>
+</div>
 
-    }
+}
 </div>
 @{
 
-} kek
+} kek *@
