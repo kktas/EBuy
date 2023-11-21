@@ -1,4 +1,4 @@
-﻿namespace EBuy.Admin.Models.ViewModels;
+﻿namespace EBuy.Admin.Models;
 
 public class Table
 {

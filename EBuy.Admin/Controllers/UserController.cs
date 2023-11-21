@@ -17,7 +17,19 @@ namespace EBuy.Admin.Controllers
         public async Task<IActionResult> Index()
         {
             var result = await _ebuyApiService.Get<List<UserDTO>>("user");
-            Page<List<UserDTO>> page = new()
+            var selectLists = new List<SelectList>
+            {
+                    new(new List<SelectListItem>()
+                {
+                    new("Option1", "Option1"),
+                    new("Option2", "Option2"),
+                    new("Option3", "Option3"),
+                    new("Option4", "Option4"),
+                    new("Option5", "Option5"),
+                })
+            };
+
+            PageIndex<List<UserDTO>> page = new()
             {
                 Data = result ?? new List<UserDTO>(),
                 View = new()
@@ -27,9 +39,9 @@ namespace EBuy.Admin.Controllers
                         new(){Text = "Admin", Url = "https://www.google.com" },
                         new(){Text = "User"},
                     },
-                    SelectLists = new List<SelectList>(),
-                    Search = new Dictionary<string, dynamic>(),
+                    SelectLists = selectLists,
                 },
+                Search = new Dictionary<string, dynamic>(),
             };
             return View(page);
         }

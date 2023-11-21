@@ -1,8 +1,37 @@
 ﻿@using EBuyAPI_DTO.User;
-@using EBuy.Admin.Models.ViewModels;
-@model Page<List<UserDTO>>
+@using EBuy.Admin.Models;
+@model PageIndex<List<UserDTO>>
 @{
     Layout = "_Layout";
+    @* var selectlist1 = new List<SelectListOptionModel>();
+selectlist1.Add(new SelectListOptionModel() { Name = "Option1", Value = "Option1" });
+selectlist1.Add(new SelectListOptionModel() { Name = "Option2", Value = "Option2" });
+selectlist1.Add(new SelectListOptionModel() { Name = "Option3", Value = "Option3" });
+selectlist1.Add(new SelectListOptionModel() { Name = "Option4", Value = "Option4" }); *@
+
+    var searchItems = new List<ISearchItem>();
+    searchItems.Add(new SelectListViewModel()
+            {
+                SelectList = Model.View.SelectLists[0],
+                Id = "selectlist1",
+                Value = "Option1",
+                Label = "SearchItem1",
+            });
+    searchItems.Add(new TextBoxViewModel()
+            {
+                Id = "textbox1",
+                Value = "textbox1value",
+                Label = "textbox1label",
+            });
+
+    @* searchItems.AddRange(Model.View.SelectLists); *@
+
+
+
+
+    @* Id = "selectlist1", Type = "select", Value = 1, Options = selectlist1 }); *@
+
+
     var table = new Table()
             {
                 Headers = new List<string>() { "Header1", "Header2", "Header3", "Header4", "Header5", "Header6", "Header7" },
@@ -23,6 +52,7 @@
         table.Rows.Add(row);
     }
 }
+@await Html.PartialAsync("~/Views/Partials/TitleSearch.cshtml", new TitleSearchViewModel(Model.View.Title, searchItems))
 
 @await Html.PartialAsync("~/Views/Partials/Table.cshtml", table)
 @* <div>

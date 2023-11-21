@@ -1,0 +1,68 @@
+﻿@model TitleSearchViewModel
+@{
+}
+
+<div class="card-header d-flex  justify-content-between">
+    <div class="h5 mb-0">@Model.Title</div>
+    <div class="card-header-actions ml-auto text-nowrap">
+        <a class="btn-info text-white btn btn-sm ml-1" role="button" href="#searchGroup1" aria-controls="searchGroup1"
+            data-bs-toggle="collapse" aria-expanded="false">
+            <i class="fas fa-search"></i>
+        </a>
+    </div>
+</div>
+
+<div class="card-body p-0 search-group no-transition collapse " id="searchGroup1">
+    <div class="container-fluid p-3">
+        @for (var itemCounter = 0; itemCounter < Model.SearchItems.Count;)
+        {
+            <div class="row">
+                @{
+                    var cellCounter = 0;
+                    while (cellCounter < 3 && itemCounter < Model.SearchItems.Count)
+                    {
+                        var typeLessItem = Model.SearchItems[itemCounter];
+
+                        <div class="col-lg-4 col-md-4 col-sm-4">
+                            <div class="form-group">
+                                <label class="mb-0" for="@(typeLessItem.Id) ">@(typeLessItem.Label)</label>
+
+                                @{
+                                    var itemTypeName = Model.SearchItems[itemCounter].GetType().Name;
+                                    if (itemTypeName == "SelectListViewModel")
+                                    {
+                                        var item = (SelectListViewModel)Model.SearchItems[itemCounter];
+                                        var selectlist = item.SelectList;
+
+                                        <select class="form-control" id="@(item.Id)" name="@(item.Id)" value="@(item.Value)">
+                                            @foreach (SelectListItem option in item.SelectList.Items)
+                                            {
+                                                if (item.Value == option.Value)
+                                                {
+                                                    <option value="@(option.Value)" selected>@(option.Text)</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="@(option.Value)">@(option.Text)</option>
+                                                }
+
+                                            }
+                                        </select>
+
+                                    }
+                                    else if (itemTypeName == "TextBoxViewModel")
+                                    {
+                                        var item = (TextBoxViewModel)Model.SearchItems[itemCounter];
+                                        <input class="form-control" type="text" value="@(item.Value)" />
+                                    }
+                                    itemCounter++;
+                                    cellCounter++;
+                                }
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+        }
+    </div>
+</div>
