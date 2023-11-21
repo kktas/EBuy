@@ -25,9 +25,9 @@ public class UserService : IUserService
         await _unitOfWork.CommitAsync();
     }
 
-    public async Task<IEnumerable<User>> GetAllUsers()
+    public async Task<IEnumerable<User>> GetAllUsers(string? full_name)
     {
-        return await _unitOfWork.Users.GetAllWithBusinessAsync();
+        return await _unitOfWork.Users.GetAllWithBusinessAsync(full_name);
     }
 
     public async Task<User> GetUserById(int id)

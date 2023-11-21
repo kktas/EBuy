@@ -9,7 +9,7 @@ namespace EBuy.Core.Repositories
 {
     public interface IUserRepository : IRepository<User>
     {
-        Task<IEnumerable<User>> GetAllWithBusinessAsync();
+        Task<IEnumerable<User>> GetAllWithBusinessAsync(string? full_name);
         Task<User> GetWithBusinessByIdAsync(int id);
         Task<IEnumerable<User>> GetAllWithBusinessByBusinessIdAsync(int businessId);
     }

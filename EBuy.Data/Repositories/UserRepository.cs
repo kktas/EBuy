@@ -8,10 +8,11 @@ namespace EBuy.Data.Repositories
     {
         public UserRepository(DbContext context) : base(context) { }
 
-        public async Task<IEnumerable<User>> GetAllWithBusinessAsync()
+        public async Task<IEnumerable<User>> GetAllWithBusinessAsync(string? full_name)
         {
             return await EBuyDbContext.Users
                 .Include(u => u.Business)
+                .Where(u => full_name == null || (u.FirstName + " " + u.LastName).Contains(full_name))
                 .ToListAsync();
         }
 

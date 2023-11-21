@@ -22,9 +22,9 @@ namespace EBuy.API.Controllers
             this._mapper = mapper;
         }
         [HttpGet]
-        public async Task<IActionResult> Get()
+        public async Task<IActionResult> Get(string? full_name)
         {
-            IEnumerable<User> users = await _userService.GetAllUsers();
+            IEnumerable<User> users = await _userService.GetAllUsers(full_name);
             IEnumerable<UserDTO> usersDTO = _mapper.Map<IEnumerable<User>, IEnumerable<UserDTO>>(users);
             return Ok(usersDTO);
         }

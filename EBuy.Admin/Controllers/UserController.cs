@@ -2,30 +2,35 @@ using Microsoft.AspNetCore.Mvc;
 using EBuyAPI_DTO.User;
 using EBuy.Admin.Models;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Reflection;
 
 namespace EBuy.Admin.Controllers
 {
     public class UserController : Controller
     {
         private readonly IEBuyApiService _ebuyApiService;
+        private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public UserController(IEBuyApiService ebuyApiService)
+        public UserController(IEBuyApiService ebuyApiService, IHttpContextAccessor httpContextAccessor)
         {
             _ebuyApiService = ebuyApiService;
+            _httpContextAccessor = httpContextAccessor;
         }
         // GET: User
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string? business_id, string? full_name, int? pn, int? ps)
         {
-            var result = await _ebuyApiService.Get<List<UserDTO>>("user");
+            string apiUrl = $"user?business_id={business_id}&full_name={full_name}&pn={pn}&ps={ps}";
+
+            var result = await _ebuyApiService.Get<List<UserDTO>>(apiUrl);
             var selectLists = new List<SelectList>
             {
                     new(new List<SelectListItem>()
                 {
-                    new("Option1", "Option1"),
-                    new("Option2", "Option2"),
-                    new("Option3", "Option3"),
-                    new("Option4", "Option4"),
-                    new("Option5", "Option5"),
+                    new("Option0", "0"),
+                    new("Option1", "1"),
+                    new("Option2", "2"),
+                    new("Option3", "3"),
+                    new("Option4", "4"),
                 })
             };
 

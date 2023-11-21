@@ -3,34 +3,21 @@
 @model PageIndex<List<UserDTO>>
 @{
     Layout = "_Layout";
-    @* var selectlist1 = new List<SelectListOptionModel>();
-selectlist1.Add(new SelectListOptionModel() { Name = "Option1", Value = "Option1" });
-selectlist1.Add(new SelectListOptionModel() { Name = "Option2", Value = "Option2" });
-selectlist1.Add(new SelectListOptionModel() { Name = "Option3", Value = "Option3" });
-selectlist1.Add(new SelectListOptionModel() { Name = "Option4", Value = "Option4" }); *@
 
     var searchItems = new List<ISearchItem>();
     searchItems.Add(new SelectListViewModel()
             {
                 SelectList = Model.View.SelectLists[0],
-                Id = "selectlist1",
-                Value = "Option1",
-                Label = "SearchItem1",
+                Id = "business_id",
+                Value = "0",
+                Label = "Business Id",
             });
     searchItems.Add(new TextBoxViewModel()
             {
-                Id = "textbox1",
-                Value = "textbox1value",
-                Label = "textbox1label",
+                Id = "full_name",
+                Value = "",
+                Label = "Full Name",
             });
-
-    @* searchItems.AddRange(Model.View.SelectLists); *@
-
-
-
-
-    @* Id = "selectlist1", Type = "select", Value = 1, Options = selectlist1 }); *@
-
 
     var table = new Table()
             {

@@ -4,7 +4,7 @@ namespace EBuy.Core.Services
 {
     public interface IUserService
     {
-        public Task<IEnumerable<User>> GetAllUsers();
+        public Task<IEnumerable<User>> GetAllUsers(string? full_name);
         public Task<User> GetUserById(int id);
         public Task<User> CreateUser(User user);
         public Task<IEnumerable<User>> GetUsersByBusinessId(int businessId);
